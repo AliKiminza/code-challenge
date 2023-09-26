@@ -15,7 +15,7 @@ powers_dict = [
 ]
 
 for power_info in powers_dict:
-    power = Power(**power_info)
+    power = Power(name=rc(power.name), description=rc(power.description))
     db.session.add(power)
 
 # Seeding heroes
@@ -33,7 +33,7 @@ heroes_dict = [
 ]
 
 for hero_info in heroes_dict:
-    hero = Hero(**hero_info)
+    hero = Hero(name=rc(hero.name), super_name=rc(hero.super_name))
     db.session.add(hero)
 
 # Adding powers to heroes
