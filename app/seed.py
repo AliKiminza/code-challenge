@@ -2,7 +2,7 @@ from random import choice as rc
 from faker import Faker
 
 from app import app, db
-from models import Power, HeroPower, Hero
+from models import Power, Hero_power, Hero
 
 fake = Faker()
 
@@ -43,7 +43,7 @@ all_powers = Power.query.all()
 for hero in Hero.query.all():
     for i in range(rc(1, 4)):  # Randomly assign 1-3 powers to each hero
         power = rc(all_powers)
-        hero_power = HeroPower(hero=hero, power=power, strength=rc(strengths))
+        hero_power = Hero_power(hero=hero, power=power, strength=rc(strengths))
         db.session.add(hero_power)
 
 # Commit changes to the database
