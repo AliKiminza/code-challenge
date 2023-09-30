@@ -4,7 +4,7 @@ from faker import Faker
 from app import app, db
 from models import Power, Hero_power, Hero
 
-fake = Faker()
+
 
 # Seeding powers
 powers_dict = [
@@ -32,6 +32,14 @@ heroes_dict = [
     {"name": "Elektra Natchios", "super_name": "Elektra"}
 ]
 
+fake = Faker()
+
+with app.app_context():
+
+    Hero.query.delete()
+    Power.query.delete()
+    Hero_power.query.delete()
+    
 for hero_info in heroes_dict:
     hero = Hero(name=rc(hero.name), super_name=rc(hero.super_name))
     db.session.add(hero)
